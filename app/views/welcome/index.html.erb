@@ -1,0 +1,7 @@
+<h1>Enter a word</h1>
+
+<%= form_for @search do |f| %>
+  <%= f.text_field  %>
+  <input type="text" name="Word" placeholder="Enter a Word">
+  <%= submit_tag "Submit" %>
+<% end %>

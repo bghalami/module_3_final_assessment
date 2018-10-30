@@ -9,10 +9,11 @@ describe "As a guest user" do
       # And I fill in a text box with "mindfulness"
       fill_in 'Word', with: 'mindfulness'
       # And I click "Submit"
-      click("Submit")
+      click_on("Submit")
       # Then I should see a message that says "Examples for using 'mindfulness'"
-      expect()
+      expect(page).to have_content("Examples for using 'mindfulness'")
       # And I should see a list of sentences with examples of how to use the word
+      expect(page).to have_css('.sentence', count: 3)
       # And I should see only sentences where the region for usage is "Brittish" or "Canadian"
       # And I should not see sentences for any other regions (or blank regions)
     end
