@@ -15,6 +15,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'faraday'
 gem 'figaro'
+gem 'active_model_serializers', '~> 0.10.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -25,6 +26,7 @@ group :development, :test do
   gem 'webmock'
   gem 'pry'
   gem 'simplecov'
+  gem 'database_cleaner'
 end
 
 group :development do

@@ -26,6 +26,20 @@ require 'support/factory_bot'
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
+require 'database_cleaner'
+
+DatabaseCleaner.strategy = :truncation
+
+RSpec.configure do |c|
+  c.include Capybara::DSL
+  c.before :each do
+    DatabaseCleaner.clean
+  end
+  c.after :each do
+    DatabaseCleaner.clean
+  end
+end
+
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures

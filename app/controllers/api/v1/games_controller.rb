@@ -1,9 +1,8 @@
 module Api
   module V1
-    class GamesController < ActionController::API
+    class GamesController < ApplicationController
       def show
-        binding.pry
-        game =
+        game = Game.find(params[:id])
         render json: game
       end
     end
