@@ -1,5 +1,5 @@
 class SearchController < ApplicationController
   def index
-    @sentences = Sentences.new(params[:Word])
+    @sentence_facade = Sentences.new(params[:Word])
   end
 end
