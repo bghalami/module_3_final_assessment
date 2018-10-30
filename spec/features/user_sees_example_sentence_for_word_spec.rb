@@ -14,8 +14,11 @@ describe "As a guest user" do
       expect(page).to have_content("Examples for using 'mindfulness'")
       # And I should see a list of sentences with examples of how to use the word
       expect(page).to have_css('.sentence', count: 3)
-      # And I should see only sentences where the region for usage is "Brittish" or "Canadian"
+      # And I should see only sentences where the region for usage is "British" or "Canadian"
+      expect(page).to have_content("Region: British")
+      expect(page).to have_content("Region: Canadian")
       # And I should not see sentences for any other regions (or blank regions)
+      expect(page).to_not have_content("Region: North American")
     end
   end
 end

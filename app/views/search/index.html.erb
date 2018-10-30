@@ -1,7 +1,12 @@
 <h1>Examples for using '<%= @sentence_facade.word %>'</h1>
 
 <% @sentence_facade.sentences.each do |sentence| %>
+<ul>
   <div class="sentence">
-    <%= sentence %>
+    <li><%= sentence[0] %>
+      <br>
+      Region: <%= sentence[1] %>
+    </li>
   </div>
+</ul>
 <% end %>

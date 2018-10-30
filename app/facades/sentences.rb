@@ -1,6 +1,6 @@
 class Sentences
   attr_accessor :word
-  
+
   def initialize(word)
     @word = word
     service
@@ -8,7 +8,7 @@ class Sentences
 
   def sentences
     service.map do |sentence|
-      sentence[:text]
+      [sentence[:text], sentence[:regions].first]
     end
   end
 
