@@ -1,5 +1,6 @@
 class Sentences
-
+  attr_accessor :word
+  
   def initialize(word)
     @word = word
     service
