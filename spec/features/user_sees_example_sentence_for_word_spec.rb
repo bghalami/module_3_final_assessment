@@ -5,11 +5,15 @@ describe "As a guest user" do
     it "should return examples of that word in a sentence" do
       # As a guest user (no sign in required)
       # When I visit "/"
-      visit '/'
+      VCR.use_cassette("visit_root") do
+        visit '/'
+      end
       # And I fill in a text box with "mindfulness"
       fill_in 'Word', with: 'mindfulness'
       # And I click "Submit"
-      click_on("Submit")
+      VCR.use_cassette("click_submit_from_home") do
+        click_on("Submit")
+      end
       # Then I should see a message that says "Examples for using 'mindfulness'"
       expect(page).to have_content("Examples for using 'mindfulness'")
       # And I should see a list of sentences with examples of how to use the word

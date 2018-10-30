@@ -12,7 +12,9 @@ describe "User goes to /api/v1/games/1" do
     sal.plays.create(game: game, word: "josh", score: 14)
     sal.plays.create(game: game, word: "no", score: 2)
 
-    get '/api/v1/games/1'
+    VCR.use_cassette("get_game_show_api") do
+      get '/api/v1/games/1'
+    end 
 
     expect(response.status).to be 200
     returned_game = JSON.parse(response.body, symbolize_names: true)
