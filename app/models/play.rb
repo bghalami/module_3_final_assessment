@@ -14,6 +14,14 @@ class Play < ApplicationRecord
 
   private
 
-    def score_word
+  def score_word
+    value = letter_array.inject(0) do |total, letter|
+      total += letter_scores[letter]
     end
+    self.score = value
+  end
+
+  def letter_array
+    word.upcase.split("")
+  end
 end
