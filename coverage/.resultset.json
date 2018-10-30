@@ -10,10 +10,14 @@
         null,
         null,
         1,
+        1,
+        null,
         null,
         1,
         null,
         1,
+        1,
+        null,
         null,
         1,
         null,
@@ -30,12 +34,21 @@
       "/Users/bghalami/turing/3module/final_assessment/scrabble_web_api/spec/rails_helper.rb": [
         null,
         1,
+        null,
         1,
         1,
         null,
         1,
         1,
         1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
         null,
         null,
         null,
@@ -399,6 +412,8 @@
         1,
         null,
         1,
+        1,
+        null,
         null,
         1,
         1,
@@ -566,6 +581,6 @@
         null
       ]
     },
-    "timestamp": 1540921794
+    "timestamp": 1540922054
   }
 }
