@@ -14,20 +14,13 @@ describe "User goes to /api/v1/games/1" do
 
     get '/api/v1/games/1'
 
-    json = {
-              "game_id":1,
-              "scores": [
-                {
-                  "user_id":1,
-                  "score":15
-                },
-                {
-                  "user_id":2,
-                  "score":16
-                }
-              ]
-            }
-
-    expect(page).to have_content(json)
+    expect(response.status).to be 200
+    returned_game = JSON.parse(response.body, symbolize_names: true)
+      expect(returned_game.keys.count).to eq(2)
+      expect(returned_game).to have_key(:game_id)
+      expect(returned_game).to have_key(:scores)
+      expect(returned_game[:scores].first.keys.count).to eq(2)
+      expect(returned_game[:scores].first).to have_key(:user_id)
+      expect(returned_game[:scores].first).to have_key(:score)
   end
 end

@@ -1,23 +1,28 @@
 class GameSerializer < ActiveModel::Serializer
-  attributes :id, :scores
+  attributes :game_id, :scores
 
-  belongs_to :player_1, class_name: "User", foreign_key: :player_1_id
-  belongs_to :player_2, class_name: "User", foreign_key: :player_2_id
-
-  has_many :plays
-
-  def scores
-    [player_1_stats, player_2_stats]
+  def game_id
+    object.id
   end
 
-  def player_1_stats
-    player = object.player_1
+  def scores
+    [player_stats(object.player_1),
+      player_stats(object.player_2)]
+  end
+
+  private
+
+  def player_stats(object_player)
+    player = object_player
     {"user_id" => player.id, "score" => total_score(player)}
   end
 
   def total_score(player)
-    object.plays.select do |play|
-      binding.pry
+    players_plays = object.plays.select do |play|
+      play.user_id == player.id
+    end
+    players_plays.sum do |play|
+      play.score
     end
   end
 end
