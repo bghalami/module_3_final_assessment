@@ -1,10 +1,17 @@
 class OxfordService
 
   def service(word)
-    x = JSON.parse(sentences_endpoint(word).body, symbolize_names: true)
-    x[:results].first[:lexicalEntries].first[:sentences].select do |sentence|
+    oxford_body(word)[:results].first[:lexicalEntries].first[:sentences].select do |sentence|
       sentence[:regions].first == "Canadian" || sentence[:regions].first == "British"
     end
+  end
+
+  def oxford_body(word)
+    get_json(sentences_endpoint(word))
+  end
+
+  def get_json(to_jsoned)
+    JSON.parse(to_jsoned.body, symbolize_names: true)
   end
 
   def conn
